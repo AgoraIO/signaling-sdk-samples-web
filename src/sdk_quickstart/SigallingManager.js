@@ -98,6 +98,7 @@ class SignallingManager {
     }
   }
 
+  // Send Message to Peer
   async sendMessageToPeer(peerId, peerMessage) {
     try {
       await this.client.sendMessageToPeer(
@@ -110,6 +111,17 @@ class SignallingManager {
       console.log("Error sending message to Peer: ", error)
     }
   }
-}
 
+  // Send message to channel
+  async sendMessageToChannel(channelMessage) {
+    if (this.channel != null) {
+      await this.channel.sendMessage({ text: channelMessage }).then(() => {
+        console.log("Message sent successfully")
+      }).catch(error => {
+        return error
+      })
+    }
+  }
+
+}
 export default SignallingManager;
