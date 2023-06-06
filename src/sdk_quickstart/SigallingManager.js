@@ -9,27 +9,27 @@ class SignallingManager {
       token: null,
       channelName: null,
       channel: null,
-      client: null,
+      signalingEngine: null,
       uid: 0,
     };
   }
 
   async initialize() {
     // Create an Agora RTM instance
-    this.client = AgoraRTM.createInstance(appID);
+    this.signalingEngine = AgoraRTM.createInstance(appID);
     
     // Create a channel
-    this.channel = this.client.createChannel(channelName)
+    this.channel = this.signalingEngine.createChannel(channelName)
 
-    // Client Event listeners
+    // signalingEngine Event listeners
     // Display messages from peer
-    this.client.on('MessageFromPeer', function (message, peerId) {
+    this.signalingEngine.on('MessageFromPeer', function (message, peerId) {
       console.log("New message from peerId: ", peerId)
       console.log("Message: ", message)
     })
 
     // Display connection state changes
-    this.client.on('ConnectionStateChanged', function (state, reason) {
+    this.signalingEngine.on('ConnectionStateChanged', function (state, reason) {
       console.log("Connection state changed to: ", state)
       console.log("Reason: ", reason)
     })
@@ -51,7 +51,7 @@ class SignallingManager {
     })
   }
 
-  // login as the client
+  // login using the signalingEngine instance
   async login() {
     try {
       let options = {
@@ -61,16 +61,16 @@ class SignallingManager {
   
       options.uid = this.state.uid
       options.token = this.state.token
-      await this.client.login(options)
+      await this.signalingEngine.login(options)
     } catch (error) {
       console.error("Failed to login with error: ", error)
     }
   }
 
-  // logout as the client
+  // logout using the signalingEngine instance
   async logout() {
     try {
-      await this.client.logout()
+      await this.signalingEngine.logout()
     } catch (error) {
       console.error("Failed to logout with error: ", error)
     }
@@ -89,7 +89,7 @@ class SignallingManager {
   async leaveChannel() {
     try {
       if (this.channel != null) {
-        await channel.leave()
+        await this.channel.leave()
       } else {
         console.log("Channel is empty")
       }
@@ -101,7 +101,7 @@ class SignallingManager {
   // Send Message to Peer
   async sendMessageToPeer(peerId, peerMessage) {
     try {
-      await this.client.sendMessageToPeer(
+      await this.signalingEngine.sendMessageToPeer(
           { text: peerMessage },
           peerId,
       ).then(sendResult => {
@@ -124,4 +124,5 @@ class SignallingManager {
   }
 
 }
+
 export default SignallingManager;
