@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stream Channel</title>
+  <script src="stream_channel.js" type="module"></script>
+  <script src="../AgoraRTM-production.js"></script>
+</head>
+<body>
+  <div id="projectSelector"></div>
+  <header>
+    <h1>Stream Channel</h1>
+    <h3>Send and receive real-time messages</h3>
+  </header>
+  <section id="projectSelector"></section>
+  <section>
+    <h3>User Information:</h3>
+    <div>
+      <label for="userId">Current user ID is:</label>
+      <b><label id="userId"></label></b>
+      <button type="button" id="login">Login</button>
+      <button type="button" id="logout">Logout</button>
+    </div>
+  </section>
+  <section>
+    <h3>Join or leave the Stream Channel:</h3>
+    <div>
+      <label id = "streamChannelNameLbl"></label>
+      <button type="button" id="streamJoinAndLeave">Join</button><br>
+    </div>
+  </section> 
+  <section> 
+  <section>
+    <h3>Send Messages:</h3>
+    <div>
+      <label>Specify a name for the topic:</label>
+      <input type="text" id="topicName" placeholder="Topic name" /><br>
+      <label for="newTopicMessage">Enter a topic message:</label>
+      <input type="text" id="topicMessage" placeholder="Topic message" />
+      <button type="button" id="sendTopicMessage">Send</button>
+    </div>
+  </section>    
+  <hr />
+  <section>
+    <div id="log"></div>
+  </section>
+</body>
+</html>

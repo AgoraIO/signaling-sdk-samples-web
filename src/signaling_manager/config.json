@@ -2,8 +2,9 @@
     "uid": "<---- Your User ID ---->",
     "appId": "<---- Your App ID ---->",
     "channelName": "<---- Your Channel Name ---->",
-    "token": "<---- Your RTM Token ---->",
-    "encryptionKey": "<---- Your encryption key ---->",
-    "encryptionSaltBase64": "<---- Your salt in base64 fo",
-    "encryptionMode": "<---- Encryption mode for the encryption ---->"
+    "token": "<---- A RTM Token ---->",
+    "cipherKey": "<---- Cipher Key ---->",
+    "salt": "<---- Salt in Base64 Format ---->",
+    "encryptionMode": "aes-256-gcm2",
+    "RtcToken": "<---- A RTC Token ---->"
 }

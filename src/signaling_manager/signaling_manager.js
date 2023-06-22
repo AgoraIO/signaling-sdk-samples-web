@@ -1,11 +1,20 @@
-
-const SignalingManager = async (messageCallback) => {
+const SignalingManager = async (messageCallback, rtmConfig) => {
   let signalingEngine = null;
+  const config = await fetch("/signaling_manager/config.json").then((res) =>
+    res.json()
+  );
+  if (rtmConfig === null) {
+    rtmConfig = {
+      token: config.token,
+      logLevel: "debug",
+      useStringUserId: true,
+    };
+  }
 
-  // Setup the signaling engine with the provided App ID, UID, and configuration
-  const setupSignalingEngine = async (appId, uid, rtmConfig) => {
+  // Set up the signaling engine with the provided App ID, UID, and configuration
+  const setupSignalingEngine = async () => {
     try {
-      signalingEngine = new AgoraRTM.RTM(appId, uid, rtmConfig);
+      signalingEngine = new AgoraRTM.RTM(config.appId, config.uid, rtmConfig);
     } catch (error) {
       console.log("Error:", error);
     }
@@ -31,6 +40,8 @@ const SignalingManager = async (messageCallback) => {
     });
   };
 
+  await setupSignalingEngine();
+
   // Login to the signaling engine
   const login = async () => {
     try {
@@ -43,16 +54,14 @@ const SignalingManager = async (messageCallback) => {
 
   // Logout from the signaling engine
   const logout = async () => {
-    signalingEngine.logout();
+    await signalingEngine.logout();
   };
 
   // Join a channel
   const join = async (channelName) => {
     try {
       await signalingEngine.subscribe({ channelName: channelName });
-      messageCallback(
-        "You have successfully joined channel " + channelName
-      );
+      messageCallback("You have successfully joined channel " + channelName);
     } catch (error) {
       console.log(error);
     }
@@ -62,9 +71,7 @@ const SignalingManager = async (messageCallback) => {
   const leave = async (channelName) => {
     try {
       await signalingEngine.unsubscribe({ channelName: channelName });
-      messageCallback(
-        "You have successfully left channel " + channelName
-      );
+      messageCallback("You have successfully left channel " + channelName);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +86,7 @@ const SignalingManager = async (messageCallback) => {
         channelName,
         publishMessage
       );
-      messageCallback(userId + ": " + publishMessage);
+      messageCallback(config.uid + ": " + publishMessage);
     } catch (error) {
       console.log(error);
     }
@@ -93,7 +100,7 @@ const SignalingManager = async (messageCallback) => {
     join,
     leave,
     sendChannelMessage,
-    setupSignalingEngine,
+    config,
   };
 };
 

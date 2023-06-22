@@ -30,6 +30,9 @@ const projectSelector = () => {
       return;
     case "authenticationGuide":
       window.location.assign("/authentication_workflow");
+      return;
+    case "streamChannel":
+      window.location.assign("/stream_channel");
       return
     case "readWriteMetadata":
       window.location.assign("/read_write_metadata");
