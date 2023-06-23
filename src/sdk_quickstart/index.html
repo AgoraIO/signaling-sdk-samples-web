@@ -7,57 +7,38 @@
     <script src="get_started.js" type="module"></script>
   </head>
   <body>
-    <h1 class="left-align">Signaling Quickstart</h1>
-    <form id="loginForm">
-      <div class="col" style="min-width: 433px; max-width: 443px">
-        <div class="card" style="margin-top: 0px; margin-bottom: 0px">
-          <div
-            class="row card-content"
-            style="margin-bottom: 0px; margin-top: 10px"
-          >
-            <div class="input-field">
-              <label>User ID</label>
-              <label id="userId"></label>
-            </div>
-            <div class="row">
-              <div>
-                <button type="button" id="login">LOGIN</button>
-                <button type="button" id="logout">LOGOUT</button>
-              </div>
-            </div>
-            <div class="input-field">
-              <label>Channel name: </label>
-              <label id="channelName"></label>
-            </div>
-            <div class="row">
-              <div>
-                <button type="button" id="join">JOIN</button>
-                <button type="button" id="leave">LEAVE</button>
-              </div>
-            </div>
-            <div class="input-field channel-padding">
-              <label>Channel Message</label>
-              <input
-                type="text"
-                placeholder="channel message"
-                id="channelMessage"
-              />
-              <button type="button" id="send_channel_message">SEND</button>
-            </div>
-            <div class="input-field">
-              <label>Peer Id</label>
-              <input type="text" placeholder="peer id" id="peerId" />
-            </div>
-            <div class="input-field channel-padding">
-              <label>Peer Message</label>
-              <input type="text" placeholder="peer message" id="peerMessage" />
-              <button type="button" id="send_peer_message">SEND</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
+    <div id="projectSelector"></div>
+    <h1>Get started with Signaling</h1>
+    <label>Login to Signaling, then send a message to a channel or another user.</label>
+    <p/>
+    <blockquote>
+    <div>
+      <label>Current user ID is </label>
+      <b><label id="userId"></label></b>:
+      <button type="button" id="login">Login</button>
+      <button type="button" id="logout">Logout</button>
+    </div><p/>
+    <div>
+      <label>Current channel name is </label>
+      <b><label id="channelName"></label></b>:
+      <button type="button" id="join">Join</button>
+      <button type="button" id="leave">Leave</button>
+    </div><p/>
+    <div>
+      <label>Send a message to the channel</label>:
+      <input type="text" placeholder="Message" id="channelMessage" />
+      <button type="button" id="send_channel_message">Send</button>
+    </div><p/>
+    <div>
+      <label>Send a message to another user:</label>
+      <input type="text" placeholder="Peer  UID" id="peerId" />
+      <input type="text" placeholder="Message" id="peerMessage" />
+      <button type="button" id="send_peer_message">Send</button>
+    </div>
+    </blockquote>
     <hr />
+    <blockquote>
     <div id="log"></div>
+    </blockquote>
   </body>
 </html>

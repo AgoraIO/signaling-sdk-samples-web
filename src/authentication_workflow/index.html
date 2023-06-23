@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Authentication workflow</title>
+    <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.6.0-205/index.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="authentication_workflow.js" type="module"></script>
+  </head>
+  <body>
+    <div id="projectSelector"></div>
+    <h1>Authentication workflow</h1>
+
+    <label>
+      <li><a href="https://docs.agora.io/en/signaling/develop/authentication-workflow#deploy-a-token-server" target=”_blank” >Deploy a token server.</a></li>
+      <li>Update <code>serverUrl</code> in this sample code.</label>
+      <li>Start the proxy server from <code>/src</code> using <code>node proxy</code>.</li>
+      <li>Run the app. Join using any UID and the app will fetch the token for you.</li>
+    <p/>
+    <blockquote>
+    <div>
+      <label>User ID: </label>
+      <input type="text" placeholder="User id" id="uid" />
+      <button type="button" id="login">LOGIN</button>
+    </div>
+    <div>
+      <label>Join any channel: </label>
+      <input type="text" placeholder="Channel Name" id="channelName" />
+      <button type="button" id="join">Join</button>
+      <button type="button" id="leave">Leave</button>
+    </div><p/>
+    <div>
+      <label>Send a message to the channel</label>:
+      <input type="text" placeholder="Message" id="channelMessage" />
+      <button type="button" id="send_channel_message">Send</button>
+    </div><p/>
+    <div>
+      <label>Send a message to another user:</label>
+      <input type="text" placeholder="Peer  UID" id="peerId" />
+      <input type="text" placeholder="Message" id="peerMessage" />
+      <button type="button" id="send_peer_message">Send</button>
+    </div>
+    </blockquote>
+    <hr />
+    <div id="log"></div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+    "uid": "<---- Your User ID ---->",
+    "appId": "<---- Your App ID ---->",
+    "channelName": "<---- Your Channel Name ---->",
+    "token": "<---- Your RTM Token ---->",
+    "proxyUrl": "<---- Your Proxy Server URL ---->",
+    "serverUrl": "<---- Your Token Generator Server URL ---->",
+    "tokenExpiryTime": "<---- Time for tokens to expire (in seconds) ---->"
+}

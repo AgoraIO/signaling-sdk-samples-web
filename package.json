@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "agora-rtm-sdk": "latest",
+    "cors-anywhere": "^0.4.4",
+    "livereload-js": "^4.0.1",
     "webpack": "^5.28.0",
     "webpack-dev-server": "^4.0.0"
   },

@@ -2,9 +2,12 @@ const path = require("path");
 const HtmlBundlerPlugin = require("html-bundler-webpack-plugin");
 
 module.exports = {
+  mode: 'development',
   entry: {
     index: "./src/index.js",
     sdk_quickstart: "./src/sdk_quickstart/get_started.js",
+    authentication_workflow: "./src/authentication_workflow/authentication_workflow.js",
+    read_write_metadata: "./src/read_write_metadata/read_write_metadata.js"
   },
   plugins: [
     new HtmlBundlerPlugin({
