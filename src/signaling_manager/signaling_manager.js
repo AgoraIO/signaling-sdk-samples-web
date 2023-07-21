@@ -5,7 +5,7 @@ const SignalingManager = async (messageCallback, eventsCallback, rtmConfig) => {
   let signalingChannel = null;
 
   // Get the config from config.json
-  const config = await fetch("/signaling_manager/config.json").then((res) =>
+  const config = await fetch("../signaling_manager/config.json").then((res) =>
     res.json()
   );
 

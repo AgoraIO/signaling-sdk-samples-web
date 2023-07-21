@@ -30,8 +30,10 @@ const SignalingManagerAuthentication = async (
             "X-Requested-With": "XMLHttpRequest",
           },
         })
-        const data = await res.json();
-        return data.rtmToken;
+        const data = await res.text();
+        console.log(data);
+        const json = await JSON.parse(data);
+        return json.rtmToken;
       } catch (err) {
         console.log(err);
       }
@@ -63,8 +65,10 @@ const SignalingManagerAuthentication = async (
             "X-Requested-With": "XMLHttpRequest",
           },
         })
-        const data = await res.json();
-        return data.rtmToken;
+        const data = await res.text();
+        console.log(data);
+        const json = await JSON.parse(data);
+        return json.rtmToken;
       } catch (err) {
         console.log(err);
       }

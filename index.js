@@ -1,4 +1,4 @@
-import setupProjectSelector from "./utils/setupProjectSelector.js";
+import setupProjectSelector from "./src/utils/setupProjectSelector.js";
 
 window.onload = async function () {
   // Project selector

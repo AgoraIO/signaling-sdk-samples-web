@@ -1,7 +1,7 @@
+import projectSelector from "../projectSelector.html?raw";
+
 const setupProjectSelector = async () => {
-  const resp = await fetch("/projectselector.html");
-  console.log(resp);
-  const html = await resp.text();
+  const html = projectSelector;
   document.getElementById("projectSelector").innerHTML = html;
 };
 
