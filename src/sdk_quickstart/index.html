@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Signaling Quickstart</title>
     <script src="get_started.js" type="module"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -16,20 +15,19 @@
           >Login to Signaling, then send a message to a channel or another
           user.</label
         >
-        <p />
-        <p />
+        <br /><br />
         <div>
           <label>Current user ID is </label>
           <b><label id="userId"></label></b>:
           <button class="button" type="button" id="login">Login</button>
         </div>
-        <p />
+        <br />
         <div>
           <label>Current channel name is </label>
           <b><label id="channelName"></label></b>:
           <button class="button" type="button" id="subscribe">Subscribe</button>
         </div>
-        <p />
+        <br />
         <div>
           <label>Send a message to the channel</label>:
           <input type="text" placeholder="Message" id="channelMessage" />
@@ -37,19 +35,19 @@
             Send
           </button>
         </div>
-        <p />
+        <br />
         <div>
           <label>Live users in the channel (presence):</label>
           <ul id="users-list"></ul>
         </div>
-        <p />
+        <br />
         <button class="button" id="fullDoc">
           Read the doc for this app
         </button>
-        <p />
+        <br />
       </div>
     </div>
-    <p />
+    <br />
     <hr />
     <blockquote>
       <div id="log"></div>
