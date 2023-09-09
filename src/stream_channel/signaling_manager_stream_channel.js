@@ -13,6 +13,14 @@ const SignalingManagerStreamChannel = async (
     eventsCallback
   );
 
+  const subscribeTopic = async function (isTopicSubscribed, topicName) {
+    if (isTopicSubscribed){
+      await signalingManager.getSignalingStreamChannel().unsubscribeTopic(topicName);
+    } else {
+      await signalingManager.getSignalingStreamChannel().subscribeTopic(topicName);
+    }
+  }
+
   const topicJoinAndLeave = async function (isTopicJoined, topicName) {
     if (isTopicJoined === false) {
       await signalingManager.getSignalingStreamChannel().joinTopic(topicName).then((response) => {
@@ -44,6 +52,7 @@ const SignalingManagerStreamChannel = async (
     ...signalingManager,
     sendTopicMessage,
     topicJoinAndLeave,
+    subscribeTopic
   };
 };
 

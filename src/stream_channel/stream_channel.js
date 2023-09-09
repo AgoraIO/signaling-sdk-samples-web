@@ -1,6 +1,5 @@
 import SignalingManagerStreamChannel from "./signaling_manager_stream_channel.js";
 import showMessage from "../utils/showMessage.js";
-import handleSignalingEvents from "../utils/handleSignalingEvents.js";
 import setupProjectSelector from "../utils/setupProjectSelector.js";
 import docURLs from "../utils/docSteURLs.js";
 
@@ -9,8 +8,17 @@ window.onload = async () => {
   let isStreamChannelJoined = false;
   let channelName = "";
   let isTopicJoined = false;
+  let isSubscribed = false;
   var isLoggedIn = false;
   var uid;
+
+  const handleSignalingEvents = (event, eventArgs) => {
+    switch (event) {
+      case "topic":
+        showMessage("topic event :" + eventArgs.eventType);
+        break;
+    }
+  };
 
   // Set the project selector
   setupProjectSelector();
@@ -23,6 +31,7 @@ window.onload = async () => {
     streamChannelJoinAndLeave,
     sendTopicMessage,
     topicJoinAndLeave,
+    subscribeTopic
   } = await SignalingManagerStreamChannel(showMessage, handleSignalingEvents);
 
   // Buttons
@@ -70,6 +79,14 @@ window.onload = async () => {
     } else {
       document.getElementById("joinTopic").innerHTML = "Join topic";
     }
+  };
+
+  document.getElementById("subscribeTopic").onclick = async function () {
+    let topic = document.getElementById("topicName").value.toString();
+    await subscribeTopic(isSubscribed, topic); // Subscribe or unsubscribe
+
+    isSubscribed = !isSubscribed;
+    document.getElementById("subscribeTopic").innerHTML = isSubscribed ? "Unsubscribe" : "Subscribe";
   };
 
   document.getElementById("sendTopicMessage").onclick = async function () {
