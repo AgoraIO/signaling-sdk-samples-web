@@ -47,6 +47,12 @@ const SignalingManager = async (messageCallback, eventsCallback, rtmConfig) => {
         messageCallback(
           `User ${eventArgs.snapshot[0].userId} joined channel ${eventArgs.channelName}`
         );
+        var newState = {"mood":"pumped", "isTyping": "false"};
+        setUserState(eventArgs.channelName, eventArgs.channelType, newState)
+      } else if (eventArgs.eventType === "REMOTE_STATE_CHANGED") {
+        messageCallback(
+          `User state changed: ${JSON.stringify(eventArgs.stateChanged)}`
+        );
       } else {
         messageCallback(
           "Presence event: " +
@@ -158,6 +164,28 @@ const SignalingManager = async (messageCallback, eventsCallback, rtmConfig) => {
     return result.occupants;
   };
 
+  // Set user state
+  const setUserState = async (channelName, channelType, state) => {
+    try {
+      const result = await getSignalingEngine().presence.setState(
+        channelName, channelType, state);
+      console.log(result);
+    } catch (error) {
+        console.log(error);
+    }
+  };  
+
+  // Get remote user state
+  const getUserState = async (userId, channelName, channelType) => {
+    try {
+      const result = await getSignalingEngine().presence.getState(userId,
+        channelName, channelType);
+      console.log(result);
+    } catch (error) {
+        console.log(error);
+    }
+  };  
+
   // Return the signaling engine and the available functions
   return {
     getSignalingEngine,
@@ -169,6 +197,8 @@ const SignalingManager = async (messageCallback, eventsCallback, rtmConfig) => {
     unsubscribe,
     sendChannelMessage,
     getOnlineMembersInChannel,
+    setUserState,
+    getUserState,
   };
 };
 
