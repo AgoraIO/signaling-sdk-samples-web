@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   agora-rtm-sdk:
-    specifier: ^2.1.4-beta.0
-    version: 2.1.4-beta.0
+    specifier: ^2.1.5-beta.0
+    version: 2.1.5-beta.0
   cors-anywhere:
     specifier: ^0.4.4
     version: 0.4.4
@@ -300,8 +300,8 @@ packages:
       indent-string: 4.0.0
     dev: true
 
-  /agora-rtm-sdk@2.1.4-beta.0:
-    resolution: {integrity: sha512-H6cXGDqj/FTH3Z/eqqIFmdJQk9MWXD8sl0elfptyucYZGVIWBcaUSvjghTmzP1AcoLkca7j7YesvMhIN9dDGBg==}
+  /agora-rtm-sdk@2.1.5-beta.0:
+    resolution: {integrity: sha512-h2/ynK16xWRE6m3kMhQb3jXj83V+oiWF3fuJTRqgXCscWdGD6FG1d6oQPG9Gy/Djj9opd0a8oPb9BtY2/9TrYg==}
     dev: false
 
   /ansi-colors@4.1.3:

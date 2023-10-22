@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "agora-rtm-sdk": "^2.1.4-beta.0",
+    "agora-rtm-sdk": "^2.1.5-beta.0",
     "cors-anywhere": "^0.4.4",
     "livereload-js": "^4.0.1",
     "url": "^0.11.1"
